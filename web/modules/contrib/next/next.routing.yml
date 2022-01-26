@@ -1,9 +1,0 @@
-next.settings:
-  path: "/admin/config/services/next/settings"
-  defaults:
-    _form: '\Drupal\next\Form\NextSettingsForm'
-    _title: "Settings"
-  requirements:
-    _permission: "administer site configuration"
-  options:
-    _admin_route: TRUE
