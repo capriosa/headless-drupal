@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "preview": "next build && next start",
-    "build": "next build && next export"
+    "build": "next build"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.0",
