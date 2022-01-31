@@ -21,8 +21,8 @@ interface NodePageProps {
 
 export default function NodePage({ node, preview }: NodePageProps) {
   const [showPreviewAlert, setShowPreviewAlert] = React.useState<boolean>(false)
-  console.log(node);
-  if (!node) return null
+  
+  //if (!node) return null
 
   React.useEffect(() => {
     setShowPreviewAlert(preview && window.top === window.self)
