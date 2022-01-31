@@ -1,5 +1,5 @@
 module.exports = {
   images: {
-    domains: ["headless-drupal-app.netlify.app"],
+    domains: ["communitiesdev.devcloud.acquia-sites.com"],
   },
 }
