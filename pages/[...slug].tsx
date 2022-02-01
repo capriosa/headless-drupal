@@ -51,10 +51,11 @@ export default function NodePage({ node, preview, menu }: NodePageProps) {
           </a>
         </div>
       )}
-            <ul>
+            <ul className="flex space-x-6">
         {menu?.map((item) => {
           return (
-            <li key={item.id}>
+            
+            <li className="font-semibold"  key={item.id}>
               <Link href={item.url} passHref>
                 <a>{item.title}</a>
               </Link>
