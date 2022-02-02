@@ -1,58 +1,44 @@
 import Head from "next/head"
-import { DrupalNode, getResourceCollectionFromContext } from "next-drupal"
-import { NodeArticleTeaser } from "@/components/node-article"
-import { GetStaticPropsResult } from "next"
+import Link from "next/link"
+import {
+  getResource,
+  DrupalNode,
+  
+} from "next-drupal";
 
-interface IndexPageProps {
-  nodes: DrupalNode[]
+interface NodePageProps {
+  node: DrupalNode
+  
 }
 
-export default function IndexPage({ nodes }: IndexPageProps) {
+export default function IndexPage({node}) {
   return (
     <>
-      <Head>
-        <title>Next.js for Drupal</title>
-        <meta
-          name="description"
-          content="A Next.js site powered by a Drupal backend."
+          <article>
+      <h1>{node.title}</h1>
+      {node.body?.processed && (
+        <div
+          dangerouslySetInnerHTML={{ __html: node.body?.processed }}
+          className="mt-6 font-serif text-xl leading-loose prose"
         />
-      </Head>
-      <div>
-        <h1 className="text-6xl font-black mb-10">Latest Articles.</h1>
-
-        {nodes?.length ? (
-          nodes.map((node) => (
-            <div key={node.id}>
-              <NodeArticleTeaser node={node} />
-              <hr className="my-20" />
-            </div>
-          ))
-        ) : (
-          <p className="py-4">No nodes found</p>
-        )}
-      </div>
+      )}
+    </article>
+    
     </>
   )
 }
 
-export async function getStaticProps(
-  context
-): Promise<GetStaticPropsResult<IndexPageProps>> {
-  const nodes = await getResourceCollectionFromContext<DrupalNode[]>(
-    "node--article",
-    context,
-    {
-      params: {
-        include: "field_image,uid",
-        sort: "-created",
-      },
-    }
+export async function getStaticProps() {
+  // Fetch the node from Drupal.
+  const node = await getResource(
+    "node--page",
+    "18e4fe22-ad8b-4981-a036-8ee64816a4ee"
   )
 
+  // Pass the node as props to the AboutPage.
   return {
     props: {
-      nodes,
+      node,
     },
-    revalidate: 10,
   }
 }
