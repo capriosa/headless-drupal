@@ -6,13 +6,16 @@ export function NodeBasicPage({ node, ...props }) {
     <article {...props}>
       <h1 className="text-6xl text-white my-4 leading-tight">{node.title}</h1>
       {node.body?.processed && (
-        <Dangerous node={node.body} />
+        <div
+        dangerouslySetInnerHTML={{ __html: node.body?.processed }}
+        className="mt-6 font-serif text-xl text-white leading-loose"
+/>
         
       )}
       
         <div className="grid grid-cols-3 gap-10 border-t-2 mt-24">
           { 
-            node.field_columns[0].processed && (
+            node.field_columns?.processed && (
             node.field_columns.map((item => 
           
             <Dangerous  node={item} />
