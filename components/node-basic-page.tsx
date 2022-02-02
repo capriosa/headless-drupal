@@ -10,14 +10,18 @@ export function NodeBasicPage({ node, ...props }) {
         
       )}
       
-        <div className="grid grid-cols-3 gap-10 border-t-2 mt-12">
+        <div className="grid grid-cols-3 gap-10 border-t-2 mt-24">
           { 
-            node.field_columns.map((item,index) => 
-              <Dangerous  key={index} node={item} />
-            )
-          }
+            node.field_columns[0].processed && (
+            node.field_columns.map((item => 
+          
+            <Dangerous  node={item} />
+          
+          ))
+          
+       )
+       }
        </div>
-
     </article>
   )
 }
