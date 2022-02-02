@@ -15,7 +15,7 @@ export function NodeBasicPage({ node, ...props }) {
       
         <div className="grid grid-cols-3 gap-10 border-t-2 mt-24">
           { 
-            node.field_columns?.processed && (
+            node.field_columns && (
             node.field_columns.map((item => 
           
             <Dangerous  node={item} />
