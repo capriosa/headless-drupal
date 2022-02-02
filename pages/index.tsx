@@ -1,5 +1,6 @@
 import Head from "next/head"
 import Link from "next/link"
+import Dangerous from "@/components/dangerous";
 import {
   getResource,
   DrupalNode,
@@ -17,10 +18,7 @@ export default function IndexPage({node}) {
           <article>
       <h1>{node.title}</h1>
       {node.body?.processed && (
-        <div
-          dangerouslySetInnerHTML={{ __html: node.body?.processed }}
-          className="mt-6 font-serif text-xl leading-loose prose"
-        />
+        <Dangerous node={node.body.processed} />
       )}
     </article>
     
