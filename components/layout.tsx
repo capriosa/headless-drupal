@@ -20,7 +20,7 @@ export function Layout({ children, menu }) {
     <div className="max-w-screen-md mx-auto px-6">
       <header>
         <div className="container mx-auto flex items-center justify-between py-6">
-          HALLO
+          
           <nav>
             Navigation
             <ul className={`flex`}>
