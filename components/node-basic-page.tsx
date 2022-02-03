@@ -1,8 +1,9 @@
+import React from "react"
 import Dangerous from "./dangerous"
 import Image from "next/image"
 
 export function NodeBasicPage({ node, ...props }) {
-  console.log(node.field_image_columns)
+  console.log("Bild: ",node.field_image)
   return (
     <article {...props}>
       <h1 className="text-6xl text-white my-4 leading-tight">{node.title}</h1>
@@ -16,10 +17,10 @@ export function NodeBasicPage({ node, ...props }) {
       
         <div className="grid grid-cols-3 gap-10  mt-6">
           { 
-            node.field_columns && (
+            node.field_columns[0] && (
             node.field_columns.map((item => 
           
-            <Dangerous  node={item} />
+            <Dangerous  key={item.id} node={item} />
           
           ))
           
@@ -34,20 +35,15 @@ export function NodeBasicPage({ node, ...props }) {
         
       )}
 
-        {
-          node.field_image_columns?.uri && (
-          node.field_image_columns[0].uri.url
-          )
-        }
-
+        
+      <div className="grid grid-cols-3 gap-10  mt-6">
        {
          
-           node.field_image_columns.map((item =>
-            {node.field_image_columns?.uri && (
-              <>
-              {console.log(item)}
-              {process.env.NEXT_PUBLIC_DRUPAL_BASE_URL}${item.uri.url}
-              <figure>
+           node.field_image.map((item,index )=>
+            {
+              return (
+              
+              <figure key={index}>
                 <Image
                   src={`${process.env.NEXT_PUBLIC_DRUPAL_BASE_URL}${item.uri.url}`}
                   width={360}
@@ -61,12 +57,13 @@ export function NodeBasicPage({ node, ...props }) {
                     {item.resourceIdObjMeta.title}
                   </figcaption>
                 )}
-              </figure></>
-            )}
+              </figure>
             
-           ))
-         
+              )
+                }
+           )
        }
+       </div>
 
     </article>
   )

@@ -4,7 +4,7 @@ import Link from "next/link"
 import { formatDate } from "../lib/format-date"
 
 export function NodeArticle({ node, ...props }) {
-  
+  console.log(node.field_image)
   return (
     <article {...props}>
       <h1 className="text-6xl font-black mb-4 leading-tight">{node.title}</h1>
