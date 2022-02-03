@@ -89,7 +89,13 @@ export async function getStaticProps(
   }
 
   let params = {}
-  if (type === "node--article" || type === "node--page") {
+  if (type === "node--article" ) {
+    params = {
+      include: "field_image,uid",
+    }
+  }
+
+  if (type === "node--page" ) {
     params = {
       include: "field_image,field_hero_image,uid",
     }
