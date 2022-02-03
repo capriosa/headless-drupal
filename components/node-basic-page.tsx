@@ -3,8 +3,25 @@ import Dangerous from "./dangerous"
 import Image from "next/image"
 
 export function NodeBasicPage({ node, ...props }) {
-  console.log("Bild: ",node.field_image)
+  console.log(node.field_hero_image)
   return (
+    <>
+    {node.field_hero_image?.uri && (
+    <figure>
+                <Image
+                  src={`${process.env.NEXT_PUBLIC_DRUPAL_BASE_URL}${node.field_hero_image.uri.url}`}
+                  layout="fill"
+                  objectFit="cover"
+                  alt={node.field_hero_image.resourceIdObjMeta.alt}
+                  className="min-w-full min-h-screen brightness-75"
+                />
+                {node.field_hero_title && (
+                  <figcaption className="text-8xl relative mb-96 w-4/5 -ml-8 mt-96 pt-24 inset-x-1/4  text-lime-600">
+                    {node.field_hero_title}
+                  </figcaption>
+                )}
+              </figure>
+    )}
     <article {...props}>
       <h1 className="text-6xl text-white my-4 leading-tight">{node.title}</h1>
       {node.body?.processed && (
@@ -36,7 +53,7 @@ export function NodeBasicPage({ node, ...props }) {
       )}
 
         
-      <div className="grid grid-cols-3 gap-10  mt-6">
+      <div className="grid grid-cols-3 gap-10  mt-6 mb-12">
        {
          
            node.field_image.map((item,index )=>
@@ -51,6 +68,7 @@ export function NodeBasicPage({ node, ...props }) {
                   layout="responsive"
                   objectFit="cover"
                   alt={item.resourceIdObjMeta.alt}
+                  className="rounded shadow-lg"
                 />
                 {item.resourceIdObjMeta.title && (
                   <figcaption className="text-sm py-2 text-gray-600 text-center">
@@ -66,5 +84,6 @@ export function NodeBasicPage({ node, ...props }) {
        </div>
 
     </article>
+    </>
   )
 }

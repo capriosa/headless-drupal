@@ -15,7 +15,7 @@ interface NodePageProps {
 export default function IndexPage({node}) {
   return (
     <>
-          <article>
+    <article>
       <h1>{node.title}</h1>
       {node.body?.processed && (
         <Dangerous node={node.body.processed} />
