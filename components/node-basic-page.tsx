@@ -1,11 +1,13 @@
 import React from "react"
 import Dangerous from "./dangerous"
+import PopupLink  from "./PopupLink"
 import Image from "next/image"
 
 export function NodeBasicPage({ node, ...props }) {
-  console.log(node.field_hero_image)
+  
   return (
     <>
+    <header>
     {node.field_hero_image?.uri && (
     <figure>
                 <Image
@@ -22,6 +24,10 @@ export function NodeBasicPage({ node, ...props }) {
                 )}
               </figure>
     )}
+
+    
+    <PopupLink ctaLabel={node.field_cta_label} overlayContent={node.field_overlay_content.value} overlayTitle={node.field_overlay_title} />
+    </header>
     <article {...props}>
       <h1 className="text-6xl text-white my-4 leading-tight">{node.title}</h1>
       {node.body?.processed && (
