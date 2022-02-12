@@ -6,9 +6,9 @@ import { useRouter } from "next/dist/client/router"
 export function Layout({ children }) {
   
   return (
-    <div className="bg-sky-900  px-6">
+    <div className="bg-white">
       
-      <main className="container mx-auto max-w-screen-lg py-10">{children} </main>
+      <main className="container mx-auto max-w-7xl py-10">{children} </main>
     </div>
   )
 }

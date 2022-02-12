@@ -8,16 +8,16 @@ export default function PopupLink(props) {
     const [showModal, setShowModal] = React.useState(false);
 
     return (
-        <section className="flex justify-center items-center h-96 -mt-48  z-50 relative">
-            {showModal === false &&
+        <section className="flex justify-center items-center   z-50 relative">
+            
             <button
-                className="bg-lime-600 shadow-lg  h-12 text-black -mt-96 active:bg-lime-600 font-bold uppercase text-sm px-6 py-3 rounded  hover:shadow-lg shadow-lime-500/20 outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+            className="flex items-center w-full px-6 py-3 mb-3 text-lg text-white bg-indigo-600 rounded-md sm:mb-0 hover:bg-indigo-700 sm:w-auto"
                 
                 onClick={() => setShowModal(true)}
             >
                 {ctaLabel}
             </button>
-            }
+        
             {showModal ? (
                 <>
                     <div
@@ -48,7 +48,7 @@ export default function PopupLink(props) {
                                 {/*footer*/}
                                 <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
                                     <button
-                                        className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                        className="text-indigo-500 background-transparent font-bold uppercase  py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                                         type="button"
                                         onClick={() => setShowModal(false)}
                                     >
